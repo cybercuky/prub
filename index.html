@@ -1,0 +1,621 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mis 80 Años Alberta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FUENTES -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<meta property="og:title" content="80 Años Alberta">
+<meta property="og:description" content="Acompáñanos a celebrar este día inolvidable ✨">
+<meta property="og:image" content="./assets/imagen1.jpeg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ff4fd8">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Cinzel',serif;
+  background:url('./assets/fondo.png') no-repeat center center fixed;
+  background-size:cover;
+  color:#fff;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* INTRO */
+
+.intro{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#000,#111);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:20px;
+}
+
+.intro h1{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+
+.intro h2{
+  font-size:2rem;
+  margin-bottom:10px;
+  color:#ffb6ec;
+}
+
+/* BOTONES */
+
+.btn{
+  display:inline-block;
+  padding:14px 32px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#ff4fd8,#ff8fe6);
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+  margin-top:20px;
+  transition:.3s ease;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+.btn:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.65);
+  padding:30px 20px;
+}
+
+.logo{
+  width:320px;
+  max-width:90%;
+  margin-bottom:25px;
+}
+
+.titulo-80{
+  font-family:'Great Vibes',cursive;
+  font-size:4rem;
+  line-height:1.2;
+  color:#ff4fd8;
+  text-shadow:
+    0 0 10px #ff4fd8,
+    0 0 25px #ff4fd8;
+}
+
+/* CONTADOR */
+
+.countdown-glass{
+  margin-top:35px;
+  padding:20px 30px;
+  max-width:420px;
+  border-radius:25px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.25);
+}
+
+.countdown{
+  font-size:1.7rem;
+  font-weight:bold;
+  color:#ffd700;
+  letter-spacing:2px;
+}
+
+/* SECCIONES */
+
+.section{
+  padding:80px 20px;
+  background:rgba(0,0,0,.65);
+}
+
+.section h2{
+  max-width:900px;
+  margin:auto;
+  line-height:1.8;
+}
+
+/* IMÁGENES */
+
+.event-image{
+  width:90%;
+  max-width:420px;
+  height:520px;
+  object-fit:cover;
+  border-radius:25px;
+  margin:30px auto;
+  box-shadow:0 15px 35px rgba(0,0,0,.6);
+}
+
+/* UBICACIÓN */
+
+.location-card{
+  max-width:450px;
+  margin:auto;
+  padding:30px 20px;
+  border-radius:25px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+}
+
+/* VIDEO */
+
+video{
+  width:90%;
+  max-width:450px;
+  border-radius:25px;
+  box-shadow:0 15px 35px rgba(0,0,0,.5);
+}
+
+/* BOLETO */
+
+.boleto{
+  margin:35px auto;
+  padding:25px;
+  max-width:340px;
+  border-radius:25px;
+  border:2px dashed gold;
+  background:rgba(255,255,255,.1);
+}
+
+.hidden{
+  display:none;
+}
+
+/* AUDIO */
+
+.audio-bar{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 18px;
+  border-radius:30px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(12px);
+  cursor:pointer;
+  z-index:10000;
+}
+
+.audio-progress{
+  width:120px;
+  height:6px;
+  background:rgba(255,255,255,.25);
+  border-radius:20px;
+  overflow:hidden;
+}
+
+#audioFill{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#ff4fd8,#ffd700);
+}
+
+/* SELECT */
+
+select{
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  font-size:1rem;
+  margin-top:20px;
+}
+
+/* FRASES */
+
+.frases{
+  max-width:900px;
+  margin:auto;
+}
+
+.frases p{
+  margin-bottom:28px;
+  font-size:1.2rem;
+  line-height:1.9;
+}
+
+/* ANIMACIÓN */
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .titulo-80{
+    font-size:3rem;
+  }
+
+  .countdown{
+    font-size:1.2rem;
+  }
+
+  .intro h1{
+    font-size:2.2rem;
+  }
+
+  .intro h2{
+    font-size:1.5rem;
+  }
+
+  .frases p{
+    font-size:1rem;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+
+<audio id="music" loop preload="auto">
+  <source src="./assets/cancion1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- BARRA AUDIO -->
+
+<div class="audio-bar" onclick="toggleAudio()">
+
+  <span id="audioIcon">▶</span>
+
+  <div class="audio-progress">
+    <div id="audioFill"></div>
+  </div>
+
+</div>
+
+<!-- INTRO -->
+
+<div id="intro" class="intro">
+
+  <div>
+
+    <h1>Mis 80 Años</h1>
+
+    <h2>Alberta de la Cruz</h2>
+
+    <p>24 · Mayo · 2026</p>
+
+    <button class="btn" onclick="entrar()">
+      Entrar
+    </button>
+
+  </div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero fade">
+
+  <img src="./assets/logo.png" class="logo">
+
+  <div class="titulo-80">
+    Mis 80 Años<br>Alberta
+  </div>
+
+  <div class="countdown-glass">
+    <div id="countdown" class="countdown"></div>
+  </div>
+
+</section>
+
+<!-- FOTO -->
+
+<section class="section fade">
+
+  <img src="./assets/imagen1.jpeg" class="event-image">
+
+</section>
+
+<!-- UBICACIÓN -->
+
+<section class="section fade">
+
+  <div class="location-card">
+
+    <h2>🏛️ Recepción</h2>
+
+    <img src="./assets/salon.jpg" class="event-image">
+
+    <a class="btn"
+       target="_blank"
+       href="https://maps.app.goo.gl/3Joox9kMEWYZiRQu9">
+
+       Ver ubicación Salón
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- VIDEO -->
+
+<section class="section fade">
+
+  <video controls preload="metadata" poster="./assets/fondo.png">
+
+    <source src="./assets/video.mp4" type="video/mp4">
+
+    Tu navegador no soporta video HTML5.
+
+  </video>
+
+</section>
+
+<!-- CONFIRMACIÓN -->
+
+<section class="section fade">
+
+  <h2>Confirmar asistencia</h2>
+
+  <select id="personas">
+
+    <option value="1">1 persona</option>
+    <option value="2">2 personas</option>
+    <option value="3">3 personas</option>
+    <option value="4">4 personas</option>
+    <option value="5">5 personas</option>
+
+  </select>
+
+  <br>
+
+  <button class="btn" onclick="generar()">
+
+    Generar boleto
+
+  </button>
+
+  <div id="boleto" class="boleto hidden">
+
+    <p id="codigo"></p>
+
+    <p id="cant"></p>
+
+    <canvas id="qr"></canvas>
+
+    <br>
+
+    <a id="wa" class="btn" target="_blank">
+
+      Enviar WhatsApp
+
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FRASES -->
+
+<section class="section fade">
+
+  <div class="frases">
+
+    <p>
+      “80 años de historias, amor y recuerdos que el tiempo jamás borrará.”
+    </p>
+
+    <p>
+      “La vida se mide en momentos felices y en las personas que caminamos junto a nosotros.”
+    </p>
+
+    <p>
+      “Cumplir 80 años es celebrar una vida llena de amor, experiencias y bendiciones.”
+    </p>
+
+    <p>
+      “Cada arruga guarda una sonrisa, cada año una enseñanza y cada recuerdo una historia inolvidable.”
+    </p>
+
+    <p>
+      “80 años vividos con el corazón dejan huellas eternas en quienes nos rodean.”
+    </p>
+
+  </div>
+
+</section>
+
+<!-- QR -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<script>
+
+/* AUDIO */
+
+let reproduciendo = false;
+
+const music = document.getElementById("music");
+
+const audioIcon = document.getElementById("audioIcon");
+
+const audioFill = document.getElementById("audioFill");
+
+function toggleAudio(){
+
+  if(!reproduciendo){
+
+    music.play();
+
+    audioIcon.innerText = "⏸";
+
+    reproduciendo = true;
+
+  }else{
+
+    music.pause();
+
+    audioIcon.innerText = "▶";
+
+    reproduciendo = false;
+  }
+}
+
+function entrar(){
+
+  document.getElementById("intro").style.display = "none";
+
+  if(!reproduciendo){
+
+    toggleAudio();
+  }
+}
+
+/* CONTADOR */
+
+const fechaEvento = new Date(2026,4,24,0,0,0);
+
+function actualizarContador(){
+
+  const ahora = new Date();
+
+  const diferencia = fechaEvento - ahora;
+
+  const countdown =
+    document.getElementById("countdown");
+
+  if(diferencia <= 0){
+
+    countdown.innerText =
+      "🎉 Hoy es el gran día 🎉";
+
+    return;
+  }
+
+  const dias =
+    Math.floor(diferencia / (1000*60*60*24));
+
+  const horas =
+    Math.floor((diferencia / (1000*60*60)) % 24);
+
+  const minutos =
+    Math.floor((diferencia / (1000*60)) % 60);
+
+  const segundos =
+    Math.floor((diferencia / 1000) % 60);
+
+  countdown.innerText =
+    `⏳ ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+actualizarContador();
+
+setInterval(actualizarContador,1000);
+
+/* PROGRESO AUDIO */
+
+music.addEventListener("timeupdate",()=>{
+
+  if(music.duration){
+
+    audioFill.style.width =
+      (music.currentTime/music.duration)*100 + "%";
+  }
+});
+
+/* QR */
+
+function generar(){
+
+  const personas =
+    document.getElementById("personas").value;
+
+  const codigoGenerado =
+    Math.random()
+    .toString(36)
+    .substring(2,8)
+    .toUpperCase();
+
+  document.getElementById("codigo").innerText =
+    "Código: " + codigoGenerado;
+
+  document.getElementById("cant").innerText =
+    "Personas: " + personas;
+
+  const qrCanvas =
+    document.getElementById("qr");
+
+  qrCanvas
+    .getContext("2d")
+    .clearRect(0,0,qrCanvas.width,qrCanvas.height);
+
+  QRCode.toCanvas(
+    qrCanvas,
+    `80 Alberta | ${codigoGenerado} | ${personas}`
+  );
+
+  document.getElementById("wa").href =
+    `https://wa.me/527222451391?text=${encodeURIComponent(
+`🎟️ BOLETO DIGITAL 80 años Alberta
+
+Código: ${codigoGenerado}
+
+Personas: ${personas}`
+    )}`;
+
+  document
+    .getElementById("boleto")
+    .classList.remove("hidden");
+}
+
+/* ANIMACIÓN */
+
+const obs = new IntersectionObserver((entries)=>{
+
+  entries.forEach((entry)=>{
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add("show");
+    }
+  });
+
+},{threshold:.2});
+
+document
+.querySelectorAll(".fade")
+.forEach(el=>obs.observe(el));
+
+</script>
+
+</body>
+</html>
